@@ -83,5 +83,43 @@ function game(){
 }
 
 
+// Create a button element
+const btn = document.createElement("button");
 
-game();
+const rockBtn = document.createElement("button");
+const paperBtn = document.createElement("button");
+const scissorsBtn = document.createElement("button");
+
+
+
+// Set button attributes
+btn.setAttribute("id", "myBtn");
+btn.setAttribute("type", "button");
+btn.setAttribute("value", "Click me");
+
+rockBtn.setAttribute("id", "rock");
+rockBtn.setAttribute("type", "butotn");
+rockBtn.setAttribute("value", "Rock");
+paperBtn.setAttribute("id", "paper");
+paperBtn.setAttribute("type", "butotn");
+paperBtn.setAttribute("value", "Paper");
+scissorsBtn.setAttribute("id", "scissors");
+scissorsBtn.setAttribute("type", "butotn");
+scissorsBtn.setAttribute("value", "Scissors");
+// Add text to the button
+btn.innerHTML = "Click me";
+rockBtn.innerHTML = "Rock";
+paperBtn.innerHTML = "Paper";
+scissorsBtn.innerHTML = "Scissors";
+
+// Add an event listener to the button
+btn.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+// Append the button to a div element
+document.getElementById("myDiv").appendChild(btn);
+
+document.getElementById("rock").appendChild(rockBtn);
+document.getElementById("paper").appendChild(paperBtn);
+document.getElementById("scissors").appendChild(scissorsBtn);
