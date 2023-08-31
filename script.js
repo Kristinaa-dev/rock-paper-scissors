@@ -10,10 +10,16 @@ function getUserChoice(){
     return input[0].toUpperCase() + input.slice(1).toLowerCase();
 }
 
+function displayResult(result){
+    document.getElementById("result").innerHTML = "";   
+    const resultDiv = document.createElement("div");
+    resultDiv.setAttribute("id", "result");
+    resultDiv.innerHTML = result;
+    document.getElementById("result").appendChild(resultDiv);
+}
 
-function playRound(){
+function playRound(user_choice){
     let com_choice = getComputerChoice();
-    let user_choice = getUserChoice();
     console.log(com_choice);
     console.log(user_choice);
 
@@ -47,31 +53,36 @@ function playRound(){
     }
 
     if (result == 1){
-        console.log(`You Won! ${user_choice} beats ${com_choice}`);
+        displayResult(`You Won! ${user_choice} beats ${com_choice}`);
     } else if (result == -1){
-        console.log(`You Lost! ${com_choice} beats ${user_choice}`);
+        displayResult(`You Lost! ${com_choice} beats ${user_choice}`);
     } else{
-        console.log(`It's a Draw!`);
+        displayResult(`It's a Draw!`);
     }
 
-    return result;
+    game(result);
 }
 
+function trackScore(com_points, user_points){
+    com_points += com_points;
+    user_points += user_points;
+    if (user_points === 5 || com_points === 5){
+        return;
 
-function game(){
-    let com_points = 0;
-    let user_points = 0;
-
-    for (i = 0; i < 5; i++){
-        let result = playRound();
-        if (result == 1){
-            user_points += 1;
-        } else if (result == -1){
-            com_points += 1;
-        }
-        console.log(com_points);
-        console.log(user_points);
     }
+}
+function game(result){
+
+    
+    // let result = playRound();
+    if (result === 1){
+        trackScore(0,1);
+    } else if (result === -1){
+        trackScore(1,0);
+    }
+    console.log(com_points);
+    console.log(user_points);
+    
     if (user_points < com_points){
         console.log("YOU LOSE :(((");
     } else if (user_points > com_points){
@@ -79,12 +90,13 @@ function game(){
     } else {
         console.log("It's a DRAW! :)");
     }
+    console.log("computer points: " + com_points);
+    console.log("user points: " + user_points);
     return;
 }
 
 
 // Create a button element
-const btn = document.createElement("button");
 
 const rockBtn = document.createElement("button");
 const paperBtn = document.createElement("button");
@@ -93,13 +105,11 @@ const scissorsBtn = document.createElement("button");
 
 
 // Set button attributes
-btn.setAttribute("id", "myBtn");
-btn.setAttribute("type", "button");
-btn.setAttribute("value", "Click me");
 
 rockBtn.setAttribute("id", "rock");
 rockBtn.setAttribute("type", "butotn");
 rockBtn.setAttribute("value", "Rock");
+
 paperBtn.setAttribute("id", "paper");
 paperBtn.setAttribute("type", "butotn");
 paperBtn.setAttribute("value", "Paper");
@@ -107,18 +117,25 @@ scissorsBtn.setAttribute("id", "scissors");
 scissorsBtn.setAttribute("type", "butotn");
 scissorsBtn.setAttribute("value", "Scissors");
 // Add text to the button
-btn.innerHTML = "Click me";
 rockBtn.innerHTML = "Rock";
 paperBtn.innerHTML = "Paper";
 scissorsBtn.innerHTML = "Scissors";
 
 // Add an event listener to the button
-btn.addEventListener("click", function() {
-  alert("Button clicked!");
+
+rockBtn.addEventListener("click", function() {
+    playRound("Rock");
+});
+
+paperBtn.addEventListener("click", function() {
+    playRound("Paper");
+});
+
+scissorsBtn.addEventListener("click", function() {
+    playRound("Scissors");
 });
 
 // Append the button to a div element
-document.getElementById("myDiv").appendChild(btn);
 
 document.getElementById("rock").appendChild(rockBtn);
 document.getElementById("paper").appendChild(paperBtn);
