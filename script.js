@@ -78,18 +78,30 @@ function game(result){
     // displayScore();
 
     if (user_points === 5 || com_points === 5){
+        const finalResult = document.createElement("div");
+        finalResult.setAttribute("id", "finalResult");
+        
         if (user_points < com_points){
+            finalResult.innerHTML = "YOU LOST HAHAH:(((";
             console.log("YOU LOST HAHAH:(((");
         } else if (user_points > com_points){
+            finalResult.innerHTML = "YOU WIN THE GAMEEE!!!!";
             console.log("YOU WIN THE GAMEEE!!!!");
         } else {
+            finalResult.innerHTML = "It's a DRAW! BRUH";
             console.log("It's a DRAW! BRUH");
         }
+        document.getElementById("finalResult").appendChild(finalResult);
         console.log("computer points: " + com_points);
         console.log("user points: " + user_points);
+        user_points = 0;
+        com_points = 0;
         return;
     }
 
+
+    document.getElementById("finalResult").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
     const score = document.createElement("div");
     score.setAttribute("id", "score");
     score.innerHTML = `Computer: ${com_points} User: ${user_points}`;
