@@ -6,13 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div id="myDiv">
-
+    <div id="ui">
+        <div class="userInterface">
+            <h1 id="choicePrompt">Choose a symbol</h1>
+            <h1 id="userPrompt">You chose</h1>
+            
+            <div class="Buttons">
+                <button id="rock" onclick="userInput('rock')">
+                    <img src="./img/rock.jpg" alt="rock" class="inputButtons">
+                </button>
+                <button id="paper" onclick="userInput('paper')">
+                    <img src="./img/paper.jpg" alt="paper" class="inputButtons">
+                </button>
+                <button id="scissors" onclick="userInput('scissors')">
+                    <img src="./img/scissors.jpg" alt="scissors"  class="inputButtons">
+                </button>
+            </div>
+        </div>
+        <div class="computerInterface">
+            <h1 id="computerChoicePrompt">Computer chose</h1>
+            <div class="computerChoice">
+                <img src="./img/rock.jpg" alt="rock" id="computerRock" class="computerButtons">
+                <img src="./img/paper.jpg" alt="paper" id="computerPaper" class="computerButtons">
+                <img src="./img/scissors.jpg" alt="scissors" id="computerScissors" class="computerButtons">
+        </div>
     </div>
-    <div id="rock"></div>
+
+
+
+    
+
+
+
+    <!-- <div id="rock"></div>
     <div id="paper"></div>
-    <div id="scissors"></div>
+    <div id="scissors"></div> -->
 </body>
 </html>

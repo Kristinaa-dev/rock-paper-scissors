@@ -4,16 +4,11 @@ function getComputerChoice(){
     return choices[choiceNum];
 }
 
-function getUserChoice(){
-    let input = prompt();
-    // make input case insensitive and return it
-    return input[0].toUpperCase() + input.slice(1).toLowerCase();
-}
 
 
-function playRound(){
+function playRound(user_choice){
     let com_choice = getComputerChoice();
-    let user_choice = getUserChoice();
+    // let user_choice = getUserChoice();
     console.log(com_choice);
     console.log(user_choice);
 
@@ -81,45 +76,39 @@ function game(){
     }
     return;
 }
+function compInput(choice){
+    console.log(choice);
+    choice = "computer" + choice;
+    document.getElementById('computerRock').style.display = 'none';
+    document.getElementById('computerPaper').style.display = 'none';
+    document.getElementById('computerScissors').style.display = 'none';
+    document.getElementById('choicePrompt').style.display = 'none';
+    // Display the button that was clicked
+    document.getElementsByClassName("computerInterface").style.display = 'block';
+    document.getElementById('ui').style.flexDirection = 'row';
+    document.getElementById(choice).style.display = 'block';
 
 
-// Create a button element
-const btn = document.createElement("button");
 
-const rockBtn = document.createElement("button");
-const paperBtn = document.createElement("button");
-const scissorsBtn = document.createElement("button");
+    // document.getElementsByClassName('ui').style.display = 'flex';
 
+    
+}
 
 
-// Set button attributes
-btn.setAttribute("id", "myBtn");
-btn.setAttribute("type", "button");
-btn.setAttribute("value", "Click me");
+function userInput(choice){
+    console.log(choice);
+    document.getElementById('rock').style.display = 'none';
+    document.getElementById('paper').style.display = 'none';
+    document.getElementById('scissors').style.display = 'none';
+    document.getElementById(choice).style.display = 'block';
+    document.getElementById('choicePrompt').style.display = 'none';
+    // Display the button that was clicked
+    document.getElementById('userPrompt').style.display = 'block';
+    compInput(getComputerChoice());
 
-rockBtn.setAttribute("id", "rock");
-rockBtn.setAttribute("type", "butotn");
-rockBtn.setAttribute("value", "Rock");
-paperBtn.setAttribute("id", "paper");
-paperBtn.setAttribute("type", "butotn");
-paperBtn.setAttribute("value", "Paper");
-scissorsBtn.setAttribute("id", "scissors");
-scissorsBtn.setAttribute("type", "butotn");
-scissorsBtn.setAttribute("value", "Scissors");
-// Add text to the button
-btn.innerHTML = "Click me";
-rockBtn.innerHTML = "Rock";
-paperBtn.innerHTML = "Paper";
-scissorsBtn.innerHTML = "Scissors";
+    
+}
 
-// Add an event listener to the button
-btn.addEventListener("click", function() {
-  alert("Button clicked!");
-});
 
-// Append the button to a div element
-document.getElementById("myDiv").appendChild(btn);
 
-document.getElementById("rock").appendChild(rockBtn);
-document.getElementById("paper").appendChild(paperBtn);
-document.getElementById("scissors").appendChild(scissorsBtn);

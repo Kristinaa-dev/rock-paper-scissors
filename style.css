@@ -1,0 +1,67 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+button{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 200px;
+    border: transparent 1px solid;
+}
+
+.Buttons, .inputButtons{
+    display: flex;
+    flex-direction: row;
+    /* width: 250px; */
+    height: 10rem;
+
+}
+.userInterface{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.computerInterface{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.computerInterface{
+    display: none;
+}
+
+.computerChoice, .computerButtons{
+    display: flex;
+    /* display: none; */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    /* width: 100%; */
+
+}
+#userPrompt{
+    display: none;
+}
+#ui{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+}
+
+/* .inputButtons{
+    width: 100%;
+} */
