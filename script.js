@@ -7,6 +7,7 @@ function getComputerChoice(){
 
 
 function playRound(user_choice){
+function playRound(user_choice){
     let com_choice = getComputerChoice();
     // let user_choice = getUserChoice();
     console.log(com_choice);
@@ -42,38 +43,66 @@ function playRound(user_choice){
     }
 
     if (result == 1){
-        console.log(`You Won! ${user_choice} beats ${com_choice}`);
+        displayResult(`You Won! ${user_choice} beats ${com_choice}`);
     } else if (result == -1){
-        console.log(`You Lost! ${com_choice} beats ${user_choice}`);
+        displayResult(`You Lost! ${com_choice} beats ${user_choice}`);
     } else{
-        console.log(`It's a Draw!`);
+        displayResult(`It's a Draw!`);
     }
 
-    return result;
+    game(result);
 }
 
+let com_points = 0;
+let user_points = 0;
 
-function game(){
-    let com_points = 0;
-    let user_points = 0;
+function game(result){
 
-    for (i = 0; i < 5; i++){
-        let result = playRound();
-        if (result == 1){
-            user_points += 1;
-        } else if (result == -1){
-            com_points += 1;
+    
+    // let result = playRound();
+    if (result === 1){
+        user_points += 1;
+    } else if (result === -1){
+        com_points += 1;
+    }
+    // displayScore();
+
+    if (user_points === 5 || com_points === 5){
+        const finalResult = document.createElement("div");
+        finalResult.setAttribute("id", "finalResult");
+        
+        if (user_points < com_points){
+            finalResult.innerHTML = "YOU LOST HAHAH:(((";
+            console.log("YOU LOST HAHAH:(((");
+        } else if (user_points > com_points){
+            finalResult.innerHTML = "YOU WIN THE GAMEEE!!!!";
+            console.log("YOU WIN THE GAMEEE!!!!");
+        } else {
+            finalResult.innerHTML = "It's a DRAW! BRUH";
+            console.log("It's a DRAW! BRUH");
         }
-        console.log(com_points);
-        console.log(user_points);
+        document.getElementById("finalResult").appendChild(finalResult);
+        console.log("computer points: " + com_points);
+        console.log("user points: " + user_points);
+        user_points = 0;
+        com_points = 0;
+        return;
     }
-    if (user_points < com_points){
-        console.log("YOU LOSE :(((");
-    } else if (user_points > com_points){
-        console.log("YOU WIN!!!!");
-    } else {
-        console.log("It's a DRAW! :)");
-    }
+
+
+    document.getElementById("finalResult").innerHTML = "";
+    document.getElementById("score").innerHTML = "";
+    const score = document.createElement("div");
+    score.setAttribute("id", "score");
+    score.innerHTML = `Computer: ${com_points} User: ${user_points}`;
+    document.getElementById("score").appendChild(score );
+
+    console.log(com_points);
+    console.log(user_points);
+    
+
+    console.log("computer points: " + com_points);
+    console.log("user points: " + user_points);
     return;
 }
 function compInput(choice){
